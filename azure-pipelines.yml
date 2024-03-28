@@ -23,10 +23,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
+- task: PublishBuildArtifacts@1
   inputs:
-    command: 'publish'
-    publishWebProjects: true
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'publish'
+    publishLocation: 'Container'
 
 - task: ArchiveFiles@2
   inputs:
@@ -39,3 +40,9 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'ls'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'publish'
+    publishLocation: 'Container'
