@@ -27,8 +27,11 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    
-- task: VSTest@2
+
+- task: ArchiveFiles@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
