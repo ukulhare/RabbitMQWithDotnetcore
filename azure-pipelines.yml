@@ -37,5 +37,5 @@ steps:
   displayName: 'PublishBuildArtifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'eShopOnWeb'
+    ArtifactName: 'publish'
     publishLocation: 'Container'
